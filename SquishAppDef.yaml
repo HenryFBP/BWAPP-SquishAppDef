@@ -37,9 +37,11 @@ application:
               build-command: "docker build ."
   team:
     members:
-      - name: Sarah Connor
+      - id: sconnor
         ldap-name: sconnor
+        name: Sarah Connor
         role: Full Stack Engineer
-      - name: Jack Black
+      - id: jblack
+        name: Jack Black
         ldap-name: jblack
         role: Database Admin
