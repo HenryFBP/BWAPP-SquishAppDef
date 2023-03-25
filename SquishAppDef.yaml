@@ -1,0 +1,44 @@
+---
+note: This is a "SquishAppDef" file, short for "Squished Application
+  Definition". It's meant to describe different characteristics about a software
+  application in a simple, easy-to-edit, easy-to-read, and
+  easy-for-a-machine-to-parse format. Please see
+  https://github.com/henryfbp/SquishAppDef for more information.
+application:
+  directories:
+    - directory:
+        uri: "https://github.com/HenryFBP/TeamAlpha-SquishAppDirectory"
+  infrastructure:
+    - infrastructure-component:
+        name: bwapp-vm
+        type: virtual-machine
+        location: azure
+        description: "The virtual machine that runs BWAPP."
+    - infrastructure-component:
+        name: bwapp-lb
+        type: load-balancer
+        location: azure
+        description: "The load balancer in front of the BWAPP vm"
+  components:
+    - component:
+        name: bwapp
+        description: "BWAPP, an intentionally vulnerable PHP app."
+        languages:
+          - language: php
+            version: 11
+        vcs-system:
+          - tool: git
+            uri: "git@github.com:HenryFBP/BWAPP-SquishAppDef.git"
+        build-system:
+          - build-tool:
+              tool: docker
+              working-directory: "./"
+              build-command: "docker build ."
+  team:
+    members:
+      - name: Sarah Connor
+        ldap-name: sconnor
+        role: Full Stack Engineer
+      - name: Jack Black
+        ldap-name: jblack
+        role: Database Admin
